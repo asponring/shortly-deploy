@@ -44,9 +44,9 @@ module.exports = function(grunt) {
     jshint: {
       files: [
         // Add filespec list here
+        ['Gruntfile.js', 'public/client/*.js']
       ],
       options: {
-        force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
@@ -80,7 +80,16 @@ module.exports = function(grunt) {
     },
 
     shell: {
+      options: {
+        stdout: true,
+        stderr: true
+      },
       prodServer: {
+        command: [
+          'git add .',
+          'git commit',
+          'git push azure master'
+        ].join('&&')
       }
     },
   });
@@ -116,7 +125,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat', 'uglify', 'cssmin'
+    'jshint', 'concat', 'uglify', 'cssmin', 'test'
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -128,7 +137,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-    // add your deploy tasks here
+    'build', 'shell:prodServer'
   ]);
 
 
