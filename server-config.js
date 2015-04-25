@@ -1,9 +1,12 @@
 var express = require('express');
 var partials = require('express-partials');
 var util = require('./lib/utility');
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/shortly'); // connect to mongo database named shortly
 var handler = require('./lib/request-handler');
+var mongoose = require('mongoose');
+
+var mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost/shortly';
+mongoose.connect(mongoURI); // connect to mongo database named shortly
+
 
 var app = express();
 
