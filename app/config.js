@@ -1,7 +1,7 @@
 // var Bookshelf = require('bookshelf');
-var path = require('path');
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/shortly'); // connect to mongo database named shortly
+// var path = require('path');
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/shortly'); // connect to mongo database named shortly
 
 // var db = Bookshelf.initialize({
 //   client: 'sqlite3',
@@ -44,4 +44,4 @@ mongoose.connect('mongodb://localhost/shortly'); // connect to mongo database na
 //   }
 // });
 
-module.exports = db;
+// module.exports = db;
